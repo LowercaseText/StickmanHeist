@@ -1,0 +1,2 @@
+other.hp -= speed;
+

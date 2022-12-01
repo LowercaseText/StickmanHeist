@@ -1,0 +1,1 @@
+if failed draw_text_color(x + sprite_get_width(sprite_index)/2,y,"Failed", c_red, c_red, c_red, c_red, 1)

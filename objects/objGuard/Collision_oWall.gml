@@ -1,0 +1,2 @@
+
+direction = random(359);
