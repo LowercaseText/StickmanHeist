@@ -14,7 +14,7 @@ var grab = mouse_check_button(mb_right);
 
 var nokey = keyboard_check(vk_nokey);
 
-
+//bozo
 
 // movement
 if (instance_nearest(x,y,objCharacterManager).chari == i && canmove)
