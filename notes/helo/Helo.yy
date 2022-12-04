@@ -3,7 +3,7 @@
   "resourceVersion": "1.1",
   "name": "Helo",
   "parent": {
-    "name": "StickmanHeist",
-    "path": "StickmanHeist.yyp",
+    "name": "Notes",
+    "path": "folders/Notes.yy",
   },
 }

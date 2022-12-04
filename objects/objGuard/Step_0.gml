@@ -1,8 +1,13 @@
 playerx = instance_nearest(x,y, objPlayer).x;
 playery = instance_nearest(x,y, objPlayer).y;
 
+
+// DO NOT TOUCH 
+// I KNOW IT'S SHITTY BUT IT WORKS FINE
+
 switch (aistate)
 {
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------
 	case "unaware":
 		if (collision_line(x, y, playerx, playery, obj_Wall, true, true) == noone && distance_to_object(global.CurrentCharacter) < 60)
 		{
@@ -15,6 +20,7 @@ switch (aistate)
 		{
 			aistate = "aware";	
 		}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------
 	case "aware":
 		global.guardsaware = true;
 		if (x = startx && y = starty)
@@ -43,6 +49,8 @@ switch (aistate)
 			}
 		}
 		break;
+		
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------
 	case "alarm easy":	
 		mp_potential_step_object(270.1118,482.4583, 0.7, obj_Wall)
 		if (x == 270.1118 && y == 482.4583)
@@ -55,10 +63,12 @@ switch (aistate)
 			aistate = "chase";
 		}
 		break;		
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------
 	case "alarm hard":
 		//mp_potential_step_object(playerx, playery, ms, obj_Wall);
 		mp_potential_step(playerx, playery, ms, true);
 		break;
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------
 	case "chase":
 		path_end();
 		//mp_potential_step_object(playerx, playery, ms, obj_Wall);
@@ -97,6 +107,7 @@ switch (aistate)
 		}
 		
 		break;
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------
 }
 
 
