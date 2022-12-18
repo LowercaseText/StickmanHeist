@@ -5,21 +5,38 @@ playery = instance_nearest(x,y, objPlayer).y;
 // DO NOT TOUCH 
 // I KNOW IT'S SHITTY BUT IT WORKS FINE
 
-switch (aistate)
+switch (state)
 {
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
-	case "unaware":
+	case "unaware easy":
 		if (collision_line(x, y, playerx, playery, obj_Wall, true, true) == noone && distance_to_object(global.CurrentCharacter) < 60)
 		{
-			previusstate = "unaware";
-			aistate = "chase"	;
+			previusstate = "unaware easy";
+			state = "chase"	;
 			
 		}
-		break;
+		
 		if (global.guardsaware)
 		{
-			aistate = "aware";	
+			state = "aware";	
 		}
+
+		break;
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------		
+	case "hard partrol":
+		if (collision_line(x, y, playerx, playery, obj_Wall, true, true) == noone && distance_to_object(global.CurrentCharacter) < 60)
+		{
+			previusstate = "hard partrol";
+			state = "chase"	;
+			
+		}
+		
+		if (global.guardsaware)
+		{
+			state = "aware";	
+		}
+
+		break;
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 	case "aware":
 		global.guardsaware = true;
@@ -35,19 +52,20 @@ switch (aistate)
 		if (collision_line(x, y, playerx, playery, obj_Wall, true, true)  == noone && distance_to_object(global.CurrentCharacter) < 60)
 		{
 			previusstate = "aware";
-			aistate = "chase"	;
+			state = "chase"	;
 		}
 		if (global.Alarm)
 		{
 			if (global.Difficulty == 1)
 			{
-				aistate = "alarm easy"					
+				state = "alarm easy"					
 			}
 			else if (global.Difficulty == 2)
 			{					
-				aistate = "alarm hard"
+				state = "alarm hard"
 			}
 		}
+		speak("ayo where tf is this mf", 1)
 		break;
 		
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -60,7 +78,7 @@ switch (aistate)
 		if (collision_line(x, y, playerx, playery, obj_Wall, true, true)  == noone && distance_to_object(global.CurrentCharacter) < 60)
 		{
 			previusstate = "alarm easy";
-			aistate = "chase";
+			state = "chase";
 		}
 		break;		
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -70,6 +88,7 @@ switch (aistate)
 		break;
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 	case "chase":
+		
 		path_end();
 		//mp_potential_step_object(playerx, playery, ms, obj_Wall);
 		mp_potential_step(playerx, playery, ms, true);
@@ -79,7 +98,7 @@ switch (aistate)
 			if (previusstate == "unaware")
 			{
 				previusstate = "chase";
-				aistate = "aware";				
+				state = "aware";				
 			}
 			else if (previusstate == "aware")
 			{
@@ -87,22 +106,22 @@ switch (aistate)
 				if (global.Difficulty == 1)
 				{
 					global.Alarm = true;
-					aistate = "alarm easy";
+					state = "alarm easy";
 				}
 				else
 				{
 					global.Alarm = true;
-					aistate = "alarm hard"
+					state = "alarm hard"
 				}
 				
 			}
 			else if (previusstate == "alarm easy")
 			{
-				aistate = "alarm easy";
+				state = "alarm easy";
 			}
 			else if (previusstate == "alarm hard")
 			{
-				aistate = "alarm hard";
+				state = "alarm hard";
 			}
 		}
 		

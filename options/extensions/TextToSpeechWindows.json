@@ -1,0 +1,9 @@
+{
+  "extensionId": {
+    "name": "TextToSpeechWindows",
+    "path": "extensions/TextToSpeechWindows/TextToSpeechWindows.yy"
+  },
+  "resourceVersion": "1.0",
+  "resourceType": "GMExtensionConfigSet",
+  "configurables": null
+}

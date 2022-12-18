@@ -1,3 +1,3 @@
 global.Alarm = false;
-global.Difficulty = 1;
+global.Difficulty = DifficultyMode.EASY;
 global.guardsaware = false;
